@@ -1,0 +1,2 @@
+class InstrumentSetupsController < ApplicationController
+end
