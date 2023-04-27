@@ -1,17 +1,45 @@
-import React from "react";
-import { NavLink } from "react-router-dom"
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom"
+
+import { UserContext  } from "../context/UserContext";
 
 
 function Navigation() {
+  const {user, logout, loggedIn} = useContext(UserContext)
+  const navigate = useNavigate()
 
+  const logoutUser = () => {
+    fetch('/logout', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(() => {
+      logout()
+      navigate('/')
+    })
+  }
 
-  return (
-    <>
-    <h1>Navigation</h1>
-      {/* <NavLink to="/signup">Sign Up</NavLink>
-      <NavLink to="/login">Login</NavLink> */}
-    </>
-  )
+  if (loggedIn) {
+    return (
+      <>
+        <h1>Hello, {user.username}</h1>
+        <br/>
+        <button onClick={logoutUser}>Logout</button>
+      </>
+    )
+  } else {
+    return (
+      <div>
+        <NavLink to='/login'>
+           <button>Login</button>
+        </NavLink>
+        <NavLink to='/signup'>
+           <button>Signup</button>
+        </NavLink>
+      </div>
+    )
+  }
+  
 }
 
 export default Navigation

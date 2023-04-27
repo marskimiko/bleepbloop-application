@@ -2,9 +2,11 @@
 // import './App.css';
 import React  from 'react';
 import { Route, Routes } from 'react-router-dom';
+
 import Navigation from './Navigation';
 import Home from './Home';
 import Login from './Login';
+import Signup from './Signup';
 
 import { UserProvider } from "../context/UserContext";
 
@@ -24,11 +26,13 @@ function App() {
   return (
     <div className="app">
       <UserProvider>
-        <Navigation>
+        <Navigation />
           <Routes>
+            {/* 3 user related paths */}
             <Route exact path="/" element={<Home />} />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/login" element={<Login />} />
           </Routes>
-        </Navigation>
       </UserProvider>
     </div>
   );
