@@ -27,7 +27,7 @@ function UserProvider({ children }) {
     })
   }, [])
 
-  const login = () => {
+  const login = (user) => {
     setUser(user)
     setLoggedIn(true)
   }

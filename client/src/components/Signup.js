@@ -1,13 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
-  const [name, setName] = useState("name")
+  const [name, setName] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [errorsList, setErrorsList] = useState([])
+  
+  const navigate = useNavigate()
   const {signup} = useContext(UserContext);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,13 +30,14 @@ function Signup() {
     .then(user => {
       if(!user.errors) {
         signup(user)
-        // history.push('/')
+        navigate('/')
       } else {
         setName("")
         setUsername("")
         setPassword("")
         setPasswordConfirmation("")
-        const errorLis= user.errors.map(error => <li>{error}</li>)
+        
+        const errorLis = user.errors.map(error => <li>{error}</li>)
         setErrorsList(errorLis)
       }
     })
