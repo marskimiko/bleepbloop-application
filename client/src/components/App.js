@@ -7,6 +7,7 @@ import Navigation from './Navigation';
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
+import Setups from './Setups';
 
 import { UserProvider } from "../context/UserContext";
 
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
+            <Route exact path="/setups" element={<Setups />} />
           </Routes>
       </UserProvider>
     </div>
