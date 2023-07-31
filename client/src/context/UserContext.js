@@ -42,6 +42,20 @@ function UserProvider({ children }) {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      setSetups(data)
+    })
+  }
+
+  // taking in a setup below becuase coming from some form, this is what nancy said for her projec, i am not sure yet if this would also apply here
+  const addSetup = (setup) => {
+    fetch('/setups', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(setup)
+    })
+    .then(res => res.json())
+    .then(data => {
+      setSetups([...setups, data])
     })
   }
 
@@ -69,7 +83,7 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, setups}}>
+    <UserContext.Provider value={{user, login, logout, signup, loggedIn, setups, addSetup}}>
       {children}
     </UserContext.Provider>
   );
