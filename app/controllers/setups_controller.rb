@@ -12,7 +12,7 @@ class SetupsController < ApplicationController
   def create
     setup = current_user.setups.create(setup_params)
     if setup.valid?
-      render json: command
+      render json: setup
     else
       render json: { errors: setup.errors.full_messages }, status: :unprocessable_entity
     end
