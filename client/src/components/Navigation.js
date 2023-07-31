@@ -25,6 +25,10 @@ function Navigation() {
         <h1>Hello, {user.username}</h1>
         <br/>
         <button onClick={logoutUser}>Logout</button>
+        <NavLink to='/setups'>
+           <button>Setups</button>
+        </NavLink>
+        <hr/>
       </>
     )
   } else {
