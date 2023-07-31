@@ -10,6 +10,7 @@ function UserProvider({ children }) {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [setups, setSetups] = useState([])
+  const [instruments, setInstruments] = useState([])
 
   // useEffect(() => {
   //   fetch('/me')
@@ -31,6 +32,7 @@ function UserProvider({ children }) {
         
         // might need to swtich to fetchInstruments(need to build this function if so) still figuring this out basing this off of following lecture video for now 
         fetchSetups()
+        // fetchInstruments()
       }
     })
   }, [])
@@ -42,6 +44,14 @@ function UserProvider({ children }) {
       console.log(data)
     })
   }
+
+  // const fetchInstruments = () => {
+  //   fetch('/instruments')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //   })
+  // }
 
   const login = (user) => {
     setUser(user)
