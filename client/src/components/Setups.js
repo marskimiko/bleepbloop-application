@@ -9,13 +9,25 @@ import { Route, useParams } from "react-router-dom";
 import { UserContext } from '../context/UserContext';
 
 function Setups() {
-  const {} = useContext(UserContext);
-  const [formFlag, setFormFlat] = useState(false);
+  const { setups, loggedIn } = useContext(UserContext);
+  const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
 
-  return (
-    <div>Setups</div>
-  )
+  if (loggedIn) {
+    const setupsList = setups.map(s => <li>{s.name}</li>)
+    return (
+      <div>
+        <h3>Setups: </h3>
+        <br />
+        {setupsList}
+      </div>
+    )
+  } else {
+    return (
+      <h3> Not Authorized - Please sign up or login</h3>
+    )
+  }
+  
 }
 
 export default Setups;
