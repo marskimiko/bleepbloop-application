@@ -69,6 +69,7 @@ function UserProvider({ children }) {
 
   const login = (user) => {
     setUser(user)
+    fetchSetups()
     setLoggedIn(true)
   }
   
