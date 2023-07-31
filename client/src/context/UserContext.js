@@ -28,6 +28,9 @@ function UserProvider({ children }) {
         setLoggedIn(false)
       } else {
         setLoggedIn(true)
+        
+        // might need to swtich to fetchInstruments(need to build this function if so) still figuring this out basing this off of following lecture video for now 
+        fetchSetups()
       }
     })
   }, [])
