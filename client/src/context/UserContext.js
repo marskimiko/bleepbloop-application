@@ -9,6 +9,7 @@ function UserProvider({ children }) {
   // const [user, setUser] = useState(null)
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
+  const [setups, setSetups] = useState([])
 
   // useEffect(() => {
   //   fetch('/me')
@@ -23,9 +24,21 @@ function UserProvider({ children }) {
     .then(res => res.json())
     .then(data => {
       setUser(data)
-      data.error ? setLoggedIn(false) : setLoggedIn(true)
+      if (data.error) {
+        setLoggedIn(false)
+      } else {
+        setLoggedIn(true)
+      }
     })
   }, [])
+
+  const fetchSetups = () => {
+    fetch('/setups')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
 
   const login = (user) => {
     setUser(user)
