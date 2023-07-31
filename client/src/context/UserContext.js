@@ -37,6 +37,8 @@ function UserProvider({ children }) {
     })
   }, [])
 
+
+  // instead of having this fetchSetups funciton and calling it throughout this component, try to send nested json by using a serializer so you dont have to call multiple fetches and keep calling the funciton repeatedly
   const fetchSetups = () => {
     fetch('/setups')
     .then(res => res.json())
@@ -75,11 +77,13 @@ function UserProvider({ children }) {
   
   const logout = () => {
     setUser({})
+    setSetups([])
     setLoggedIn(false)
   }
 
   const signup = (user) => {
     setUser(user)
+    fetchSetups()
     setLoggedIn(true)
   }
 
