@@ -6,7 +6,13 @@ import { Route, useParams } from "react-router-dom";
 // import SetupLinks from "./SetupLinks"
 // import Setup from './Setup'
 
+import { UserContext } from '../context/UserContext';
+
 function Setups() {
+  const {} = useContext(UserContext);
+  const [formFlag, setFormFlat] = useState(false);
+  const params = useParams();
+
   return (
     <div>Setups</div>
   )
