@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react'
 import { Route, useParams } from "react-router-dom";
+import SetupForm from "./SetupForm"
 
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import SetupForm from "./SetupForm"
@@ -18,8 +19,14 @@ function Setups() {
     return (
       <div>
         <h3>Setups: </h3>
-        <br />
         {setupsList}
+        <br />
+        {formFlag ? 
+          <SetupForm />
+          :
+          <button onClick={() => setFormFlag(true)}>Create Setup</button>
+        }
+
       </div>
     )
   } else {

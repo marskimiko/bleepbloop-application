@@ -12,7 +12,7 @@ import Instruments from './Instruments';
 
 import { UserProvider } from "../context/UserContext";
 
-function App() {
+function App(props) {
   // const { user, setUser } = useContext(UserContext);
 
   // useEffect(() => {
