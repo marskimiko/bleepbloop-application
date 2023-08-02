@@ -1,9 +1,15 @@
 class InstrumentsController < ApplicationController
   # before_action :authorize
 
+  # temporarily comment out current_user index just for testing some stuff out
+
+  # def index
+  #   instruments = current_user.instruments
+  #   render json: instruments
+  # end
+
   def index
-    instruments = current_user.instruments
-    render json: instruments
+    render json: Instrument.all, status: :ok
   end
   
   def create
