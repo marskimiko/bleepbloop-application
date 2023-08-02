@@ -16,12 +16,19 @@ function Setups() {
   const params = useParams();
 
   if (loggedIn) {
-    const setupsList = setups.map(s => <li>{s.name}</li>)
-    
+    const setupsList = setups.map(setup =>
+    <div>
+      <h3>Name: {setup.name}</h3>
+      <h4>Description: {setup.description}</h4>
+      <img src={setup.photo} alt="setup"/>
+      <h5>Genre: {setup.genre}</h5>
+    </div> 
+    )
+
     return (
       <div>
         
-        <h3>Setups: </h3>
+        <h3>Setups </h3>
         {setupsList}
         <br />
         {formFlag ? 
