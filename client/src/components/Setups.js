@@ -6,7 +6,7 @@ import SetupForm from "./SetupForm"
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import SetupForm from "./SetupForm"
 // import SetupLinks from "./SetupLinks"
-// import Setup from './Setup'
+import Setup from './Setup'
 
 import { UserContext } from '../context/UserContext';
 
@@ -17,11 +17,8 @@ function Setups() {
 
   if (loggedIn) {
     const setupsList = setups.map(setup =>
-    <div>
-      <h3>Name: {setup.name}</h3>
-      <h4>Description: {setup.description}</h4>
-      <img src={setup.photo} alt="setup"/>
-      <h5>Genre: {setup.genre}</h5>
+    <div className="setups">
+      <Setup key={setup.id} setup={setup}/>
     </div> 
     )
 
