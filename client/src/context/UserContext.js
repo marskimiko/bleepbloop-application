@@ -32,7 +32,7 @@ function UserProvider({ children }) {
         
         // might need to swtich to fetchInstruments(need to build this function if so) still figuring this out basing this off of following lecture video for now 
         fetchSetups()
-        // fetchInstruments()
+        fetchInstruments()
       }
     })
   }, [])
@@ -61,34 +61,38 @@ function UserProvider({ children }) {
     })
   }
 
-  // const fetchInstruments = () => {
-  //   fetch('/instruments')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data)
-  //   })
-  // }
+  const fetchInstruments = () => {
+    fetch('/instruments')
+    .then(res => res.json())
+    .then(data => {
+      setInstruments(data)
+      console.log('usercontext instruments', data)
+    })
+  }
 
   const login = (user) => {
     setUser(user)
     fetchSetups()
+    fetchInstruments()
     setLoggedIn(true)
   }
   
   const logout = () => {
     setUser({})
     setSetups([])
+    setInstruments([])
     setLoggedIn(false)
   }
 
   const signup = (user) => {
     setUser(user)
     fetchSetups()
+    fetchInstruments()
     setLoggedIn(true)
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, setups, addSetup}}>
+    <UserContext.Provider value={{user, login, logout, signup, loggedIn, setups, addSetup, instruments}}>
       {children}
     </UserContext.Provider>
   );

@@ -36,6 +36,7 @@ function App(props) {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/setups" element={<Setups />} />
             <Route exact path="/instruments" element={<Instruments />} />
+            {/* <Route exact path="/instruments" element={<Instruments />} /> */}
           </Routes>
       </UserProvider>
     </div>

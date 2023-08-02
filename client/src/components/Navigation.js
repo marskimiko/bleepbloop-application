@@ -28,6 +28,9 @@ function Navigation() {
         <NavLink to='/setups'>
            <button>Setups</button>
         </NavLink>
+        <NavLink to='/instruments'>
+           <button>instruments</button>
+        </NavLink>
         <hr/>
       </>
     )

@@ -9,13 +9,25 @@ import { Route, useParams } from "react-router-dom";
 import { UserContext } from '../context/UserContext';
 
 function Instruments() {
-  const {} = useContext(UserContext);
-  const [formFlag, setFormFlat] = useState(false);
+  const { instruments, loggedIn } = useContext(UserContext);
+  const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
 
-  return (
-    <div>instruments</div>
-  )
+  if (loggedIn) {
+    const instrumentList = instruments.map(instrument => <li>{instrument.name}</li>)
+
+    return (
+      <div>
+        <h3>instruments: </h3>
+        {instrumentList}
+      </div>
+    )
+  } else {
+    return (
+      <h3> Not Authorized - Please sign up or login</h3>
+    )
+  }
+
 }
 
 export default Instruments;

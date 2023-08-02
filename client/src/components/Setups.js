@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react'
 import { Route, useParams } from "react-router-dom";
 import SetupForm from "./SetupForm"
+// import Instruments from './Instruments';
 
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import SetupForm from "./SetupForm"
@@ -16,8 +17,10 @@ function Setups() {
 
   if (loggedIn) {
     const setupsList = setups.map(s => <li>{s.name}</li>)
+    
     return (
       <div>
+        
         <h3>Setups: </h3>
         {setupsList}
         <br />
@@ -26,7 +29,8 @@ function Setups() {
           :
           <button onClick={() => setFormFlag(true)}>Create Setup</button>
         }
-
+        <br />
+        {/* <div>{<Instruments />}</div> */}
       </div>
     )
   } else {
