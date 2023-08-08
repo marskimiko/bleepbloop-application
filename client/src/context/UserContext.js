@@ -20,6 +20,8 @@ function UserProvider({ children }) {
   //   })
   // }, [])
 
+  console.log(user, 'user')
+
   useEffect(() => {
     fetch('/me')
     .then(res => res.json())
@@ -31,7 +33,7 @@ function UserProvider({ children }) {
         setLoggedIn(true)
         
         // might need to swtich to fetchInstruments(need to build this function if so) still figuring this out basing this off of following lecture video for now 
-        fetchSetups()
+        // fetchSetups()
         fetchInstruments()
       }
     })
@@ -39,40 +41,42 @@ function UserProvider({ children }) {
 
 
   // instead of having this fetchSetups funciton and calling it throughout this component, try to send nested json by using a serializer so you dont have to call multiple fetches and keep calling the funciton repeatedly
-  const fetchSetups = () => {
-    fetch('/setups')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setSetups(data)
-    })
-  }
+
+  // const fetchSetups = () => {
+  //   fetch('/setups')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log(data)
+  //     setSetups(data)
+  //   })
+  // }
 
   // taking in a setup below becuase coming from some form, this is what nancy said for her projec, i am not sure yet if this would also apply here
-  const addSetup = (setup) => {
-    fetch('/setups', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(setup)
-    })
-    .then(res => res.json())
-    .then(data => {
-      setSetups([...setups, data])
-    })
-  }
+
+  // const addSetup = (setup) => {
+  //   fetch('/setups', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json'},
+  //     body: JSON.stringify(setup)
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setSetups([...setups, data])
+  //   })
+  // }
 
   const fetchInstruments = () => {
     fetch('/instruments')
     .then(res => res.json())
     .then(data => {
       setInstruments(data)
-      console.log('usercontext instruments', data)
+      // console.log('usercontext instruments', data)
     })
   }
 
   const login = (user) => {
     setUser(user)
-    fetchSetups()
+    // fetchSetups()
     fetchInstruments()
     setLoggedIn(true)
   }
@@ -86,13 +90,13 @@ function UserProvider({ children }) {
 
   const signup = (user) => {
     setUser(user)
-    fetchSetups()
+    // fetchSetups()
     fetchInstruments()
     setLoggedIn(true)
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, setups, addSetup, instruments}}>
+    <UserContext.Provider value={{user, login, logout, signup, loggedIn, instruments}}>
       {children}
     </UserContext.Provider>
   );

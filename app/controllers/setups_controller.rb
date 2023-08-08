@@ -1,17 +1,15 @@
 class SetupsController < ApplicationController
-  # belongs_to :user
-  # has_many :instrument_setups
-
   # before_action :authorize
 
   # def index
-  #   setups = current_user.setups
-  #   render json: setups
+  #   render json: Setup.all, status: :ok
   # end
 
   def index
-    render json: Setup.all, status: :ok
+    setups = current_user.setups
+    render json: setups
   end
+
 
   def create
     setup = current_user.setups.create(setup_params)
@@ -22,21 +20,21 @@ class SetupsController < ApplicationController
     end
   end
 
-  def show
-    setup = Setup.find(params[:id])
-    render json: setup
-  end
-
   # def show
-  #   setup = current_user.setups.find_by(id: params[:id])
-
-  #   if setup
-  #     render json: setup
-  #   else
-  #     render json: { error: "Not Found" }, status: :unauthorized
-  #   end
-
+  #   setup = Setup.find(params[:id])
+  #   render json: setup
   # end
+
+  def show
+    setup = current_user.setups.find_by(id: params[:id])
+
+    if setup
+      render json: setup
+    else
+      render json: { error: "Not Found" }, status: :unauthorized
+    end
+
+  end
 
   private
 

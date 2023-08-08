@@ -13,19 +13,32 @@ import SetupForm from "./SetupForm"
 import { UserContext } from '../context/UserContext';
 
 function Setups() {
-  const { setups, loggedIn } = useContext(UserContext);
+  const { loggedIn, user } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
 
+  const userSetups = user.setups
+
+  console.log('setups',userSetups)
+  
+
   if (loggedIn) {
-    const setupsList = setups.map(setup =>
-    <div>
+    // const setupsList = setups.map(setup =>
+    // <div>
+    //   <h3>Name: {setup.name}</h3>
+    //   <h4>Description: {setup.description}</h4>
+    //   <a href={`/setups/${setup.id}`}><img src={setup.photo} alt="setup"/></a>
+    //   <h5>Genre: {setup.genre}</h5>
+    // </div> 
+    // )
+ 
+    const setupsList = userSetups.map(setup =>
+      <div>
       <h3>Name: {setup.name}</h3>
       <h4>Description: {setup.description}</h4>
       <a href={`/setups/${setup.id}`}><img src={setup.photo} alt="setup"/></a>
       <h5>Genre: {setup.genre}</h5>
-    </div> 
-    )
+    </div> )
 
     return (
       <div>
