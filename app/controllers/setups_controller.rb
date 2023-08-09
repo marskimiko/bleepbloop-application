@@ -46,8 +46,8 @@ class SetupsController < ApplicationController
     params.permit(:name, :description, :photo, :genre)
   end
 
-  def authorize
-    return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
-  end
+  # def authorize
+  #   return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
+  # end
 
 end

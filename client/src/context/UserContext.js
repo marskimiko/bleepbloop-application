@@ -20,7 +20,7 @@ function UserProvider({ children }) {
   //   })
   // }, [])
 
-  console.log(user, 'user')
+  // console.log(user, 'user')
 
   useEffect(() => {
     fetch('/me')
@@ -31,9 +31,6 @@ function UserProvider({ children }) {
         setLoggedIn(false)
       } else {
         setLoggedIn(true)
-        
-        // might need to swtich to fetchInstruments(need to build this function if so) still figuring this out basing this off of following lecture video for now 
-        // fetchSetups()
         fetchInstruments()
       }
     })
@@ -96,7 +93,7 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{user, login, logout, signup, loggedIn, instruments}}>
+    <UserContext.Provider value={{user, setUser, login, logout, signup, loggedIn, instruments}}>
       {children}
     </UserContext.Provider>
   );

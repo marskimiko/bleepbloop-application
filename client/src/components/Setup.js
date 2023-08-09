@@ -16,6 +16,8 @@ function Setup({ setup }) {
         <Card.Img src={photo}/>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
+          <Card.Text>{description}</Card.Text>
+          <Card.Text>{genre}</Card.Text>
         </Card.Body>
       </Card>
       </div>      
