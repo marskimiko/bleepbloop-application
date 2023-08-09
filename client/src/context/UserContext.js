@@ -9,7 +9,7 @@ function UserProvider({ children }) {
   // const [user, setUser] = useState(null)
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
-  const [setups, setSetups] = useState([])
+  // const [setups, setSetups] = useState([])
   const [instruments, setInstruments] = useState([])
 
   // useEffect(() => {
@@ -80,7 +80,6 @@ function UserProvider({ children }) {
   
   const logout = () => {
     setUser({})
-    setSetups([])
     setInstruments([])
     setLoggedIn(false)
   }

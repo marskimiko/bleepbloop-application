@@ -5,79 +5,42 @@ import { UserContext } from '../context/UserContext';
 const SetupForm = () => {
   const { user, setUser } = useContext(UserContext);
   // const params = useParams();
-  console.log(user)
+  // console.log(user.setups)
 
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [photo, setPhoto] = useState("");
   const [genre, setGenre] = useState("");
-  const [errors, setErrors] = useState([]);
-  // const { addSetup } = useContext(UserContext);
 
-  const addSetup = (setup) => {
-    fetch(`/users/${user.id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(setup)
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log('data', data)
-      // setSetups([...setups, data])
-    })
+  function updateUserSetups(setup) {
+    const updatedSetups = [...user.setups, setup]
+    const updatedUser = {...user, setups: updatedSetups}
+    setUser(updatedUser)
   }
 
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    addSetup({
-      name: name,
-      description: description,
-      photo: photo,
-      genre: genre
+
+    fetch(`/setups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: name,
+        description: description,
+        photo: photo,
+        genre: genre
+      })
     })
+    .then(res => res.json())
+    .then(data => {
+      // console.log('data', data)
+      updateUserSetups(data)
+    })
+
   }
+  
 
-  // const addNewSetup = (setup) => {
-    
-  //   const checkUser = user.map((user) => {
-  //     if (parseInt(params.id) === user.id) {
-  //       const newSetup = [...user.setups, setup]
-  //       user.setups = newSetup
-  //       return user;
-  //     } else {
-  //       return user
-  //     }
-  //   })
-  //   setUser(checkUser)
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-
-  //   const setup = {
-  //     name,
-  //     description,
-  //     photo, 
-  //     genre
-  //   }
-
-  //   fetch(`/users/${params.id}`, {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify(setup)
-  //   })
-
-  //   .then(res => {
-  //     if(res.ok){
-  //       res.json().then(setup => {
-  //         addNewSetup(setup)
-  //       })
-  //     } else {
-  //       res.json().then(json => setErrors(json.errors))
-  //     }
-  //   })
-  // }
 
   return (
     <form onSubmit={handleSubmit}>
