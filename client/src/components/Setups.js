@@ -8,7 +8,7 @@ import SetupForm from "./SetupForm"
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import SetupForm from "./SetupForm"
 // import SetupLinks from "./SetupLinks"
-// import Setup from './Setup'
+import Setup from './Setup'
 
 import { UserContext } from '../context/UserContext';
 
@@ -16,29 +16,27 @@ function Setups() {
   const { loggedIn, user } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
-
-  const userSetups = user.setups
-
-  console.log('setups',userSetups)
   
 
   if (loggedIn) {
-    // const setupsList = setups.map(setup =>
-    // <div>
+    const userSetups = user.setups
+  
+    // const setupsList = userSetups.map(setup =>
+    //   <div>
     //   <h3>Name: {setup.name}</h3>
     //   <h4>Description: {setup.description}</h4>
     //   <a href={`/setups/${setup.id}`}><img src={setup.photo} alt="setup"/></a>
     //   <h5>Genre: {setup.genre}</h5>
     // </div> 
     // )
- 
-    const setupsList = userSetups.map(setup =>
-      <div>
-      <h3>Name: {setup.name}</h3>
-      <h4>Description: {setup.description}</h4>
-      <a href={`/setups/${setup.id}`}><img src={setup.photo} alt="setup"/></a>
-      <h5>Genre: {setup.genre}</h5>
-    </div> )
+
+    const setupsList = userSetups.map((setup) => {
+      return (
+        <div className="container">
+          <Setup key={setup.id} setup={setup}/>
+        </div>
+      )
+    })
 
     return (
       <div>

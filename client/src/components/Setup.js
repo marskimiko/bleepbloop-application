@@ -8,16 +8,17 @@ function Setup({ setup }) {
   const {name, description, photo, genre, id} = setup;
 
   return (
-    <div>
-      <h2>Setupcard</h2>
-      <h3>{setup.name}</h3>
-      {/* <Card>
-      <Card.Img variant="top" src={photo} />
+    <div className='container'>
+      <div className='item'>
+        {/* <h2>{name}</h2>
+        <h3>{description}</h3> */}
+      <Card>
+        <Card.Img src={photo}/>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
-          <Link  to={`/setups/${id}`}><Button variant="success">more info</Button></Link>
         </Card.Body>
-      </Card> */}
+      </Card>
+      </div>      
     </div>
   )
 }
