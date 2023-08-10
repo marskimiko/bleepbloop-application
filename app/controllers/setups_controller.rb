@@ -36,6 +36,16 @@ class SetupsController < ApplicationController
     end
   end
 
+  def update
+    setup = Setup.find(params[:id])
+    if setup && setup.user_id == current_user.id
+      setup.update!(setup_params)
+      render json: setup, status: :created
+    else
+      render json: "Invalid Credentials", status: :unauthorized
+    end
+  end
+
   def destroy
     setup = Setup.find(params[:id])
     if setup && setup.user_id === current_user.id

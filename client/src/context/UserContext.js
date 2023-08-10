@@ -7,8 +7,15 @@ const UserContext = React.createContext();
 // create a provider component
 function UserProvider({ children }) {
   // const [user, setUser] = useState(null)
-  // const [user, setUser] = useState({})
   const [user, setUser] = useState({})
+  // const [user, setUser] = useState({
+  //   id: null,
+  //   setups: [],
+  //   name: "",
+  //   username: "",
+  //   photo:"",
+  //   genre:""
+  // });
   const [loggedIn, setLoggedIn] = useState(false)
   // const [setups, setSetups] = useState([])
   const [instruments, setInstruments] = useState([])
@@ -36,8 +43,6 @@ function UserProvider({ children }) {
       }
     })
   }, [])
-
-
   // instead of having this fetchSetups funciton and calling it throughout this component, try to send nested json by using a serializer so you dont have to call multiple fetches and keep calling the funciton repeatedly
 
   // const fetchSetups = () => {
@@ -80,9 +85,9 @@ function UserProvider({ children }) {
   }
   
   const logout = () => {
+    setLoggedIn(false)
     setUser({})
     setInstruments([])
-    setLoggedIn(false)
   }
 
   const signup = (user) => {
