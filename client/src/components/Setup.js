@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../context/UserContext';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
+
+
 function Setup({ setup }) {
+  const { user, setUser } = useContext(UserContext);
   const {name, description, photo, genre, id} = setup;
+  console.log('setup', setup)
+  console.log('user',user)
+
+  function deleteSetup() {
+    const setups = user.setups
+    const filteredSetups = setups.filter((setup) => setup.id !== id)
+    const updatedUser = {...user, setups: filteredSetups}
+    setUser(updatedUser)
+  }
+  
+  const handleDelete = () => {
+    fetch(`/setups/${id}`, {
+      method: 'DELETE',
+    });
+    deleteSetup(id)
+    // updateUser(id)
+  };
 
   return (
     <div className='container'>
@@ -19,6 +41,7 @@ function Setup({ setup }) {
           <Card.Text>{description}</Card.Text>
           <Card.Text>{genre}</Card.Text>
         </Card.Body>
+        <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button>
       </Card>
       </div>      
     </div>

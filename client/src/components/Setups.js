@@ -17,18 +17,9 @@ function Setups() {
   
 
   if (loggedIn) {
-    const userSetups = user.setups
+    // const userSetups = user.setups
   
-    // const setupsList = userSetups.map(setup =>
-    //   <div>
-    //   <h3>Name: {setup.name}</h3>
-    //   <h4>Description: {setup.description}</h4>
-    //   <a href={`/setups/${setup.id}`}><img src={setup.photo} alt="setup"/></a>
-    //   <h5>Genre: {setup.genre}</h5>
-    // </div> 
-    // )
-
-    const setupsList = userSetups.map((setup) => {
+    const setupsList = user.setups.map((setup) => {
       return (
         <div className="container">
           <Setup key={setup.id} setup={setup}/>
