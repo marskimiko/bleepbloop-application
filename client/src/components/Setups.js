@@ -17,8 +17,6 @@ function Setups() {
   
 
   if (loggedIn) {
-    // const userSetups = user.setups
-  
     const setupsList = user.setups.map((setup) => {
       return (
         <div className="container">

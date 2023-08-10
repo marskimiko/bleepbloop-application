@@ -10,17 +10,7 @@ class SetupsController < ApplicationController
     render json: setups
   end
 
-
-  def create
-    setup = current_user.setups.create(setup_params)
-    if setup.valid?
-      render json: setup
-    else
-      render json: { errors: setup.errors.full_messages }, status: :unprocessable_entity
-    end
-  end
-
-  # def show
+   # def show
   #   setup = Setup.find(params[:id])
   #   render json: setup
   # end
@@ -35,6 +25,28 @@ class SetupsController < ApplicationController
     end
 
   end
+
+
+  def create
+    setup = current_user.setups.create(setup_params)
+    if setup.valid?
+      render json: setup
+    else
+      render json: { errors: setup.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    setup = Setup.find(params[:id])
+    if setup && setup.user_id === current_user.id
+      setup.destroy
+      head :no_content
+    else 
+      render json: "Invalid Credentioals", status: :unauthorized
+    end 
+  end
+
+
 
   private
 

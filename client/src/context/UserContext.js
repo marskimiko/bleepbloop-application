@@ -7,6 +7,7 @@ const UserContext = React.createContext();
 // create a provider component
 function UserProvider({ children }) {
   // const [user, setUser] = useState(null)
+  // const [user, setUser] = useState({})
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   // const [setups, setSetups] = useState([])
