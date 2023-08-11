@@ -8,13 +8,6 @@ import Button from 'react-bootstrap/Button';
 function EditSetup({setup, isEdit, setIsEdit}) {
   const { user, setUser } = useContext(UserContext);
   const {name, description, photo, genre, id} = setup;
-  // const {id} = setup;
-
-  // const [name, setName] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [photo, setPhoto] = useState("");
-  // const [genre, setGenre] = useState("");
-
   const [formData, setFormData] = useState({
     name: name,
     description: description,
@@ -36,14 +29,9 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         return setup
       }
     })
-  
-    setUser(editedSetupList)
+    const updatedUser = {...user, setups: editedSetupList}
+    setUser(updatedUser)
   }
-
-  // const handleUpdateSetup = (updatedSetup) => {
-  //   setIsEdit(false);
-  //   editSetupList(updatedSetup);
-  // }
 
 
   function handleEditSetup(e) {
@@ -58,7 +46,6 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     .then(res => res.json())
     .then(data => {
       editSetupList(data)
-      console.log(data)
       // handleUpdateSetup(data)
       // setIsEdit(!isEdit)
     })
