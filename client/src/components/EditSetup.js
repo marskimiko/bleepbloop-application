@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 
 import Container from 'react-bootstrap/Container';
@@ -8,6 +8,12 @@ import Button from 'react-bootstrap/Button';
 function EditSetup({setup, isEdit, setIsEdit}) {
   const { user, setUser } = useContext(UserContext);
   const {name, description, photo, genre, id} = setup;
+  // const {id} = setup;
+
+  // const [name, setName] = useState("")
+  // const [description, setDescription] = useState("")
+  // const [photo, setPhoto] = useState("");
+  // const [genre, setGenre] = useState("");
 
   const [formData, setFormData] = useState({
     name: name,
@@ -16,19 +22,29 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     genre: genre
   });
 
-  // const [name, setName] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [photo, setPhoto] = useState("");
-  // const [genre, setGenre] = useState("");
-
-
-  // function editSetup(e) {
-  //   setSetupUpdates({ ...setSetupUpdates, [e.target.name]: e.target.value });
-  // }
 
   function handleChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
+  
+
+  function editSetupList(updatedSetup) {
+    const editedSetupList = user.setups.map((setup) => {
+      if (setup.id === updatedSetup.id) {
+       return updatedSetup
+      } else {
+        return setup
+      }
+    })
+  
+    setUser(editedSetupList)
+  }
+
+  // const handleUpdateSetup = (updatedSetup) => {
+  //   setIsEdit(false);
+  //   editSetupList(updatedSetup);
+  // }
+
 
   function handleEditSetup(e) {
     e.preventDefault();
@@ -36,21 +52,22 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     fetch(`/setups/${id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
+      // body: JSON.stringify(formData)
       body: JSON.stringify(formData)
     })
     .then(res => res.json())
     .then(data => {
-      handleChange(data)
+      editSetupList(data)
+      console.log(data)
+      // handleUpdateSetup(data)
+      // setIsEdit(!isEdit)
     })
   }
 
   
-
-
-
   return (
     <Container>
-    <Form onSubmit={handleEditSetup}>
+    <Form name="editSetupForm" onSubmit={handleEditSetup}>
       <Form.Label>Name:</Form.Label>
       <Form.Control
         type="text"
