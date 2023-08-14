@@ -18,9 +18,7 @@ function Setups() {
 
   if (loggedIn) {
     const userSetups = user.setups
-    console.log(userSetups)
     const setupsList = userSetups.map((setup) => {
-      // debugger
       return (
         <div className="container">
           <Setup key={setup.id} setup={setup}/>

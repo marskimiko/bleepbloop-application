@@ -14,15 +14,13 @@ function Setup({ setup }) {
   const {name, description, photo, genre, id} = setup;
 
   const [isEdit, setIsEdit] = useState(false);
-  const [setupUpdates, setSetupUpdates] = useState({
-    name: name,
-    description: description,
-    photo: photo,
-    genre: genre
-  })
+  // const [setupUpdates, setSetupUpdates] = useState({
+  //   name: name,
+  //   description: description,
+  //   photo: photo,
+  //   genre: genre
+  // })
 
-  console.log('setup', setup)
-  console.log('user',user)
 
   function deleteSetup() {
     const setups = user.setups

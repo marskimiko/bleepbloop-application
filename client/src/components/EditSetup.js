@@ -40,14 +40,11 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     fetch(`/setups/${id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify(formData)
       body: JSON.stringify(formData)
     })
     .then(res => res.json())
     .then(data => {
       editSetupList(data)
-      // handleUpdateSetup(data)
-      // setIsEdit(!isEdit)
     })
   }
 
