@@ -14,17 +14,16 @@ import {
 } from "@mui/material";
 
 
-const SetupForm = () => {
+const SetupForm = ({ instrument, id }) => {
   const { user, setUser, instruments, setInstruments } = useContext(UserContext);
-  // const params = useParams();
-  // console.log(user.setups)
+  
+
 
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [photo, setPhoto] = useState("");
   const [genre, setGenre] = useState("");
-  const [selectedInstruments, setSelectedInstruments] = useState([]);
-
+  const [instrumentId, setInstrumentId] = useState([]);
 
   function updateUserSetups(setup) {
     const updatedSetups = [...user.setups, setup]
@@ -44,7 +43,8 @@ const SetupForm = () => {
         name: name,
         description: description,
         photo: photo,
-        genre: genre
+        genre: genre,
+        instrumentId: instrumentId
       })
     })
     .then(res => res.json())
@@ -54,8 +54,6 @@ const SetupForm = () => {
     })
 
   }
-
-  
   // return (
   //   <Container>
   //   <Form onSubmit={handleSubmit}>
@@ -95,8 +93,6 @@ const SetupForm = () => {
   //   </Form>
   //   </Container>
   // );
-
-
   return (
     <form onSubmit={handleSubmit}>
       <label>Name: </label>
@@ -131,9 +127,9 @@ const SetupForm = () => {
         <InputLabel>Instruments</InputLabel>
         <Select
         multiple
-        value={selectedInstruments}
-        onChange={(e) => setSelectedInstruments(e.target.value)}
-        input={<OutlinedInput label="Multiple Select" />}
+        value={instrumentId}
+        onChange={(e) => setInstrumentId(e.target.value)}
+        input={<OutlinedInput label="instruments" />}
       >
         {instruments.map((instrument) => (
           <MenuItem key={instrument.id} value={instrument.id}>

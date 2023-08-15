@@ -8,7 +8,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import Setups from './Setups';
-import Instruments from './Instruments';
+// import Instruments from './Instruments';
 
 import { UserProvider } from "../context/UserContext";
 
@@ -35,7 +35,7 @@ function App(props) {
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/setups" element={<Setups />} />
-            <Route exact path="/instruments" element={<Instruments />} />
+            {/* <Route exact path="/instruments" element={<Instruments />} /> */}
             {/* <Route exact path="/instruments" element={<Instruments />} /> */}
           </Routes>
       </UserProvider>
