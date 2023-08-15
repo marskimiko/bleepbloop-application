@@ -4,6 +4,9 @@ import Setup from './Setup'
 import SetupForm from "./SetupForm"
 
 import { UserContext } from '../context/UserContext';
+
+import Button from 'react-bootstrap/Button';
+
 // import Instruments from './Instruments';
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import SetupForm from "./SetupForm"
@@ -35,10 +38,12 @@ function Setups() {
         {formFlag ? 
           <SetupForm />
           :
-          <button onClick={() => setFormFlag(true)}>Create Setup</button>
+          <Button 
+          onClick={() => setFormFlag(true)}
+          className='createsetupbutton'
+          >Create Setup</Button>
         }
         <br />
-        {/* <div>{<Instruments />}</div> */}
       </div>
     )
   } else {

@@ -1,14 +1,14 @@
 class SetupsController < ApplicationController
   # before_action :authorize
 
-  # def index
-  #   render json: Setup.all, status: :ok
-  # end
-
   def index
-    setups = current_user.setups
-    render json: setups
+    render json: Setup.all, status: :ok
   end
+
+  # def index
+  #   setups = current_user.setups
+  #   render json: setups
+  # end
 
    # def show
   #   setup = Setup.find(params[:id])
@@ -28,11 +28,14 @@ class SetupsController < ApplicationController
 
 
   def create
-    setup = current_user.setups.create(setup_params)
+    setup = current_user.setups.create!(setup_params)
     if setup.valid?
 
-      params[:instrument_ids].each{|instrument_id| InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)}
-      
+      # params[:instrument_ids].each{|instrument_id| InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)}
+      params[:instrument_ids].each do |instrument_id|
+        InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)
+      end 
+    
       render json: setup
     else
       render json: { errors: setup.errors.full_messages }, status: :unprocessable_entity

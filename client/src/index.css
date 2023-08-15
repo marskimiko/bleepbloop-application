@@ -11,3 +11,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .container {
+  padding-top: 500px;
+  display: grid;
+  justify-content: space-evenly; 
+  float: left;
+  width:  1px;
+  height: 1px;
+  object-fit: cover;
+} */
+
+/* .item {
+  width: 18rem;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.reviewcontainer {
+  padding-bottom: 40px
+}
+
+.reviewItem {
+
+} */
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+.card {
+  background: grey;
+  padding: 15px;
+  width: 30%;
+  
+}
+
+.createsetupbutton {
+  
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+}
+
