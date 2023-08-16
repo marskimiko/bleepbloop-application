@@ -1,7 +1,8 @@
-import React, {useState, useContext} from 'react'
-import { Route, useParams } from "react-router-dom";
+import React, { useState, useContext } from 'react'
+import { Route, Routes } from "react-router-dom";
 import Setup from './Setup'
 import SetupForm from "./SetupForm"
+// import SetupDetails from './SetupDetails';
 
 import { UserContext } from '../context/UserContext';
 
@@ -25,6 +26,10 @@ function Setups() {
       return (
         <div className="container">
           <Setup key={setup.id} setup={setup}/>
+          {/* <Routes>
+          <Route exact path="/setups/:id" element={<SetupDetails setup={setup}/>}/>
+          </Routes> */}
+          
         </div>
       )
     })

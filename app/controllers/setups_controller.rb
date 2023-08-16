@@ -54,7 +54,7 @@ class SetupsController < ApplicationController
 
   def destroy
     setup = Setup.find(params[:id])
-    if setup && setup.user_id === current_user.id
+    if setup && setup.user_id == current_user.id
       setup.destroy
       head :no_content
     else 

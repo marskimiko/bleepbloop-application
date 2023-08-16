@@ -30,7 +30,6 @@ const SetupForm = () => {
     setUser(updatedUser)
   }
    
-  console.log(instruments)
   
   const handleSubmit = (e) => {
     e.preventDefault()

@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 
 
 
+
 function Setup({ setup }) {
   const { user, setUser } = useContext(UserContext);
   const {name, description, photo, genre, id} = setup;
@@ -46,6 +47,7 @@ function Setup({ setup }) {
           <Card.Body>
             <Card.Text>{description}</Card.Text>
             <Card.Text>{genre}</Card.Text>
+            <Link  to={`/setups/${id}`}><Button variant="primary">more info</Button></Link>
           </Card.Body>
           
         )}
