@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext';
 import EditSetup from './EditSetup';
+import SetupDetails from './SetupDetails';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
@@ -19,7 +20,7 @@ function Setup({ setup }) {
 
   function deleteSetup() {
     const setups = user.setups
-    const filteredSetups = setups.filter((setup) => setup.id !== id)
+    const filteredSetups = setups.filter((filteredSetup) => filteredSetup.id !== id)
     const updatedUser = {...user, setups: filteredSetups}
     setUser(updatedUser)
   }
@@ -30,6 +31,7 @@ function Setup({ setup }) {
     });
     deleteSetup(id)
   };
+  
 
 
   return (
@@ -47,7 +49,11 @@ function Setup({ setup }) {
           <Card.Body>
             <Card.Text>{description}</Card.Text>
             <Card.Text>{genre}</Card.Text>
-            <Link  to={`/setups/${id}`}><Button variant="primary">more info</Button></Link>
+            <Link  
+              to={`/setups/${id}`}
+            >
+              <Button variant="primary">more info</Button>
+            </Link>
           </Card.Body>
           
         )}

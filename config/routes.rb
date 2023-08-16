@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   post '/signup', to: 'users#create'
   get '/users/:id', to: 'users#show'
+  get '/setups/:id', to: 'setups#show'
   post '/users/:user_id', to: 'setups#create'
 
 
