@@ -7,7 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 function SetupDetails() {
-  const { user, instruments } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const params = useParams()
   const userSetups = user.setups
 
@@ -15,7 +15,19 @@ function SetupDetails() {
     return parseInt(params.id) === userSetup.id
    })
 
-   console.log(instruments)
+
+  // const addInstrumentDetails = userSetups.find((userSetup) => {
+  //   if (parseInt(params.id) === userSetup.id) {
+  //     instruments.filter((instrument) => {
+  //       const checkInstrumentSetupIds = instrument.map((instrumentSetupIds) => {
+  //         console.log(instrumentSetupIds) 
+  //       })
+  //      })
+  //   }
+  // })
+
+  console.log('setupDetails',setupDetails.instruments)
+
 
 return (
   <div className="container">
@@ -27,6 +39,7 @@ return (
     </Card.Body>
     <ListGroup className="list-group-flush">
       <ListGroup.Item>Genre: {setupDetails.genre}</ListGroup.Item>
+      <ListGroup.Item>Instruments: {setupDetails.instruments.map(instrument => <li>{instrument.name}</li>)}</ListGroup.Item>
     </ListGroup>
   </Card>
   </div>

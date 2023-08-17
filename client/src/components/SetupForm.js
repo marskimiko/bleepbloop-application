@@ -8,11 +8,9 @@ import Button from 'react-bootstrap/Button';
 import {
   OutlinedInput,
   InputLabel,
-  Input,
   MenuItem,
   Select,
-  FormControl,
-  TextField
+  FormControl
 } from "@mui/material";
 
 
@@ -47,7 +45,7 @@ const SetupForm = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('data', data)
+      // console.log('data', data)
       updateUserSetups(data)
     })
 
@@ -107,6 +105,11 @@ const SetupForm = () => {
     </Form>
     </Container>
   );
+
+
+}
+
+export default SetupForm;
 
   // return (
   //   <form onSubmit={handleSubmit}>
@@ -203,7 +206,3 @@ const SetupForm = () => {
   //     <Input type="submit"/>
   //   </FormControl>
   // )
-
-}
-
-export default SetupForm;

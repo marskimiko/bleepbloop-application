@@ -25,11 +25,11 @@ function Navigation() {
         <h1>Hello, {user.username}</h1>
         <br/>
         <button onClick={logoutUser}>Logout</button>
+        <NavLink to='/'>
+           <button>home</button>
+        </NavLink>
         <NavLink to='/setups'>
            <button>Setups</button>
-        </NavLink>
-        <NavLink to='/instruments'>
-           <button>instruments</button>
         </NavLink>
         <hr/>
       </>

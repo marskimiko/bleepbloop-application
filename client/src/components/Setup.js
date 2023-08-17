@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext';
-import { useParams } from 'react-router-dom';
 
 import EditSetup from './EditSetup';
 
@@ -13,11 +12,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 function Setup({ setup }) {
   const { user, setUser } = useContext(UserContext);
-  const params = useParams()
   const {name, description, photo, genre, id} = setup;
   const [isEdit, setIsEdit] = useState(false);
 
-  // console.log('params',params)
   
 
   function deleteSetup() {
@@ -27,12 +24,6 @@ function Setup({ setup }) {
     setUser(updatedUser)
   }
 
-  // function deleteSetup() {
-  //   const setups = user.setups
-  //   const filteredSetups = setups.filter((filteredSetup) => parseInt(params.id) !== filteredSetup.id)
-  //   const updatedUser = {...user, setups: filteredSetups}
-  //   setUser(updatedUser)
-  // }
   
   const handleDelete = () => {
     fetch(`/setups/${id}`, {

@@ -8,14 +8,14 @@ import Button from 'react-bootstrap/Button';
 
 
 function Setups() {
-  const { loggedIn, user } = useContext(UserContext);
+  const { loggedIn, user, instruments } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
   
+  // console.log(user.setups)
+  // console.log(instruments)
 
   if (loggedIn) {
-    const userSetups = user.setups
-    console.dir(userSetups, {depth: null});
-    const setupsList = userSetups.map((setup) => {
+    const setupsList = user.setups.map((setup) => {
       return (
         <div className="container">
           <Setup key={setup.id} setup={setup}/>          
