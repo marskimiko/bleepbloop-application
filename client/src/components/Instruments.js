@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react'
-import { Route, useParams } from "react-router-dom";
-import SetupForm from './SetupForm';
+import { useParams } from "react-router-dom";
 // these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
 // import InstrumentForm from "./SetupForm"
 // import InstrumentLinks from "./SetupLinks"
@@ -8,21 +7,41 @@ import SetupForm from './SetupForm';
 
 import { UserContext } from '../context/UserContext';
 
-function Instruments() {
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+
+function Instruments({ instrument }) {
   const { instruments, loggedIn } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
 
+  console.log(instrument)
 
+
+
+  // return (
+  //   <div>
+  //     {instruments.map((instrument) => 
+  //       <SetupForm
+  //         key={instrument.id}
+  //         instrument={instrument}
+  //       />
+  //     )}
+  //   </div>
+  // )
 
   return (
-    <div>
-      {instruments.map((instrument) => 
-        <SetupForm
-          key={instrument.id}
-          instrument={instrument}
-        />
-      )}
+    <div className="container">
+      <Card style={{ width: '15rem' }}>
+        <Card.Title>Name: {instrument.name}</Card.Title>
+        {/* <Card.Img>{instrument.photo}</Card.Img> */}
+        {/* <Card.Body>
+          <Card.Text>Brand: {instrument.brand}</Card.Text>
+          <Card.Text>Category: {instrument.category}</Card.Text>
+        </Card.Body> */}
+        <ListGroup.Item>Brand: {instrument.brand}</ListGroup.Item>
+        <ListGroup.Item>Brand: {instrument.category}</ListGroup.Item>
+      </Card>
     </div>
   )
 
