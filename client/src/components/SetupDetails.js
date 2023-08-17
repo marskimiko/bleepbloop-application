@@ -7,24 +7,22 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 function SetupDetails() {
-  const { user, loggedIn } = useContext(UserContext);
+  const { user, instruments } = useContext(UserContext);
   const params = useParams()
-
   const userSetups = user.setups
-  console.log(params.id)
-  console.log(user.setups)
 
   const setupDetails = userSetups.find((userSetup) => {
     return parseInt(params.id) === userSetup.id
    })
 
+   console.log(instruments)
 
 return (
   <div className="container">
   <Card style={{ width: '18rem' }}>
+  <Card.Title>{setupDetails.name}</Card.Title>
     <Card.Img variant="top" src={setupDetails.photo} alt="mapPhoto"/>
     <Card.Body>
-      <Card.Title>{setupDetails.name}</Card.Title>
       <Card.Text>{setupDetails.description}</Card.Text>
     </Card.Body>
     <ListGroup className="list-group-flush">

@@ -1,22 +1,24 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../context/UserContext';
+import { useParams } from 'react-router-dom';
+
 import EditSetup from './EditSetup';
-import SetupDetails from './SetupDetails';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
-
-
+import ListGroup from 'react-bootstrap/ListGroup';
+          
 
 function Setup({ setup }) {
   const { user, setUser } = useContext(UserContext);
+  const params = useParams()
   const {name, description, photo, genre, id} = setup;
-
   const [isEdit, setIsEdit] = useState(false);
 
+  // console.log('params',params)
+  
 
   function deleteSetup() {
     const setups = user.setups
@@ -24,6 +26,13 @@ function Setup({ setup }) {
     const updatedUser = {...user, setups: filteredSetups}
     setUser(updatedUser)
   }
+
+  // function deleteSetup() {
+  //   const setups = user.setups
+  //   const filteredSetups = setups.filter((filteredSetup) => parseInt(params.id) !== filteredSetup.id)
+  //   const updatedUser = {...user, setups: filteredSetups}
+  //   setUser(updatedUser)
+  // }
   
   const handleDelete = () => {
     fetch(`/setups/${id}`, {
@@ -35,8 +44,8 @@ function Setup({ setup }) {
 
 
   return (
-    <div className="wrapper">
-      <Card className="card">
+    <div className="container">
+      <Card style={{ width: '18rem' }}>
         <Card.Header as="h5">{name}</Card.Header>
         <Card.Img src={photo}/>
         {isEdit ?(
@@ -48,17 +57,17 @@ function Setup({ setup }) {
         ) : (
           <Card.Body>
             <Card.Text>{description}</Card.Text>
-            <Card.Text>{genre}</Card.Text>
-            <Link  
-              to={`/setups/${id}`}
-            >
-              <Button variant="primary">more info</Button>
-            </Link>
-          </Card.Body>
-          
+          </Card.Body>          
         )}
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item>Genre: {genre}</ListGroup.Item>
+        </ListGroup>
+        
         <Button variant="outline-secondary" onClick={() => setIsEdit((isEdit) => !isEdit)}>edit</Button>
         <Button variant="outline-secondary" onClick={handleDelete}>🗑</Button>
+        <Link to={`/setups/${id}`}>
+          <Button variant="outline-secondary">more info</Button>
+        </Link>
       </Card>
     </div>
   );

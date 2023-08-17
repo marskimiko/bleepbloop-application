@@ -13,15 +13,6 @@ function Instruments() {
   const [formFlag, setFormFlag] = useState(false);
   const params = useParams();
 
-  // const instrumentsList = instruments.map((instrument) => {
-  //   return (
-  //     <SetupForm instrument={instrument}/>
-  //   )
-  // })
-
-  // return (
-  //   <div>{instrumentsList}</div>
-  // )
 
 
   return (

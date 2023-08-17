@@ -1,42 +1,30 @@
 import React, { useState, useContext } from 'react'
-import { Route, Routes } from "react-router-dom";
-import Setup from './Setup'
-import SetupForm from "./SetupForm"
-// import SetupDetails from './SetupDetails';
-
 import { UserContext } from '../context/UserContext';
 
-import Button from 'react-bootstrap/Button';
+import Setup from './Setup'
+import SetupForm from "./SetupForm"
 
-// import Instruments from './Instruments';
-// these are all components nancy used, not sure if I will use them too, just put them here as an option to consider
-// import SetupForm from "./SetupForm"
-// import SetupLinks from "./SetupLinks"
+import Button from 'react-bootstrap/Button';
 
 
 function Setups() {
   const { loggedIn, user } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
-  // const params = useParams();
   
 
   if (loggedIn) {
     const userSetups = user.setups
+    console.dir(userSetups, {depth: null});
     const setupsList = userSetups.map((setup) => {
       return (
         <div className="container">
-          <Setup key={setup.id} setup={setup}/>
-          {/* <Routes>
-          <Route exact path="/setups/:id" element={<SetupDetails setup={setup}/>}/>
-          </Routes> */}
-          
+          <Setup key={setup.id} setup={setup}/>          
         </div>
       )
     })
 
     return (
       <div>
-        
         <h3>Setups </h3>
         {setupsList}
         <br />
