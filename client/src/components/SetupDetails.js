@@ -80,3 +80,49 @@ function SetupDetails() {
 
 export default SetupDetails
 
+
+
+
+// {
+//   "Version": "2012-10-17",
+//   "Id": "Policy1692739526575",
+//   "Statement": [
+//       {
+//           "Sid": "Stmt1692739523606",
+//           "Effect": "Allow",
+//           "Principal": {
+//               "AWS": "arn:aws:iam::236037743042:root"
+//           },
+//           "Action": [
+//               "s3:GetObject",
+//               "s3:PutObject"
+//           ],
+//           "Resource": "arn:aws:s3:::bleepbloop-application/*"
+//       }
+//   ]
+// }
+
+
+
+// {
+//   "Id": "Policy1692818957039",
+//   "Version": "2012-10-17",
+//   "Statement": [
+//     {
+//       "Sid": "Stmt1692818951022",
+//       "Action": [
+//         "s3:DeleteObject",
+//         "s3:GetObject",
+//         "s3:ListBucket",
+//         "s3:PutObject"
+//       ],
+//       "Effect": "Allow",
+//       "Resource": "arn:aws:s3:::bleepbloop-application/*",
+//       "Principal": {
+//         "AWS": [
+//           "arn:aws:iam::236037743042:root"
+//         ]
+//       }
+//     }
+//   ]
+// }
