@@ -6,26 +6,36 @@ import { UserContext } from '../context/UserContext';
 function Login() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [errors, setErrors] = useState("")
   const navigate = useNavigate()
 
   const {login} = useContext(UserContext)
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e){
     e.preventDefault()
-    fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type':'application/json'},
-      body: JSON.stringify({
-        username: username,
-        password: password
+
+    fetch(`/login`,{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({
+        username:username,
+        password:password
       })
     })
-    .then(res=>res.json())
-    .then((user) => {
-      login(user)
-      navigate('/')
-    })
+
+    .then(res => {
+      if(res.ok){
+        res.json()
+        .then(user => {
+          login(user)
+          navigate("/");
+        })
+        } else {
+          res.json().then(json => {
+            setErrors(json.errors) 
+          })
+        }
+      })  
   }
 
   return (
@@ -46,9 +56,7 @@ function Login() {
         /> <br/>
         <input type="submit"/>
       </form>
-      <ul>
-        <h3>{error}</h3>
-      </ul>
+      {errors? <div style={{ color: "red" }}>{errors}</div>:null}
     </>
   )
 }

@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  # before_action :authorize
+  before_action :authorize
 
   # temporarily comment out current_user index just for testing some stuff out
 
@@ -47,8 +47,8 @@ class InstrumentsController < ApplicationController
   #   params.permit(:name, :brand, :photo, :category)
   # end
 
-  # def authorize
-  #   return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
-  # end
+  def authorize
+    return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
+  end
 
 end

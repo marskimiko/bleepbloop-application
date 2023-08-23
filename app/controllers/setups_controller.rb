@@ -1,5 +1,6 @@
 class SetupsController < ApplicationController
-  # before_action :authorize
+  skip_before_action :authorize, only: [:index]
+  before_action :authorize, only: [:show]
 
   def index
     render json: Setup.all, status: :ok
@@ -27,7 +28,7 @@ class SetupsController < ApplicationController
 
 
   def create
-    setup = current_user.setups.create!(setup_params)
+    setup = @current_user.setups.create!(setup_params)
     if setup.valid?
 
       # params[:instrument_ids].each{|instrument_id| InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)}
@@ -42,7 +43,7 @@ class SetupsController < ApplicationController
 
   def update
     setup = Setup.find(params[:id])
-    if setup && setup.user_id == current_user.id
+    if setup && setup.user_id == @current_user.id
       setup.update!(setup_params)
       render json: setup, status: :created
     else
@@ -52,7 +53,7 @@ class SetupsController < ApplicationController
 
   def destroy
     setup = Setup.find(params[:id])
-    if setup && setup.user_id == current_user.id
+    if setup && setup.user_id == @current_user.id
       setup.destroy
       head :no_content
     else 
@@ -64,16 +65,16 @@ class SetupsController < ApplicationController
 
   private
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+  # def current_user
+  #   User.find_by(id: session[:user_id])
+  # end
 
   def setup_params
     params.permit(:name, :description, :photo, :genre, :instrument_ids)
   end
 
-  # def authorize
-  #   return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
-  # end
+  def authorize
+    return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
+  end
 
 end

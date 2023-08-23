@@ -13,17 +13,13 @@ function SetupDetails() {
   const { user } = useContext(UserContext);
   const params = useParams()
   const userSetups = user.setups
+  
 
-  // const details = (userSetups || []).find((userSetup) => {
-  //   return parseInt(params.id) === userSetup.id
-  //  })
-  //  trying out optional chaining, seems to work for .find but not on .map
 
-  const details = userSetups.find((userSetup) => parseInt(params.id) === userSetup.id) 
 
-  // const instruments = details.instruments
+  const details = userSetups?.find((userSetup) => parseInt(params.id) === userSetup.id) 
 
-  const renderInstruments = details.instruments.map((instrument) => {
+  const renderInstruments = details?.instruments.map((instrument) => {
     return (
       <div>
         <Instruments key={instrument.id} instrument={instrument} />

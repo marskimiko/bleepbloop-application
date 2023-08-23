@@ -34,7 +34,7 @@ function Instruments({ instrument }) {
     <div className="container">
       <Card style={{ width: '15rem' }}>
         <Card.Title>Name: {instrument.name}</Card.Title>
-        {/* <Card.Img>{instrument.photo}</Card.Img> */}
+        <Card.Img src={instrument.photo} alt="instruments"/>
         {/* <Card.Body>
           <Card.Text>Brand: {instrument.brand}</Card.Text>
           <Card.Text>Category: {instrument.category}</Card.Text>
