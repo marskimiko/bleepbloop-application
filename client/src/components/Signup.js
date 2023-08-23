@@ -64,7 +64,7 @@ function Signup() {
     formData.append("password", password)
 
 
-    fetch(`/users`,{
+    fetch(`/signup`,{
       method:'POST',
       body: formData
     })
