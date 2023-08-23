@@ -1,0 +1,9 @@
+development:
+  cloud_name: dvc62cglf
+  api_key: 824277219712332
+  api_secret: dFAN4tAFuuiAWfmRfPday1xJXDg
+  
+production:
+  cloud_name: dvc62cglf
+  api_key: 824277219712332
+  api_secret: dFAN4tAFuuiAWfmRfPday1xJXDg

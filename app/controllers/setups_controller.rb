@@ -10,21 +10,20 @@ class SetupsController < ApplicationController
   #   render json: setups
   # end
 
-   # def show
-  #   setup = Setup.find(params[:id])
-  #   render json: setup
-  # end
-
   def show
-    setup = current_user.setups.find_by(id: params[:id])
-
-    if setup
-      render json: setup
-    else
-      render json: { error: "Not Found" }, status: :unauthorized
-    end
-
+    setup = Setup.find(params[:id])
+    render json: setup
   end
+
+  # def show
+  #   setup = current_user.setups.find_by(id: params[:id])
+  #   if setup
+  #     render json: setup
+  #   else
+  #     render json: { error: "Not Found" }, status: :unauthorized
+  #   end
+
+  # end
 
 
   def create
@@ -35,7 +34,6 @@ class SetupsController < ApplicationController
       params[:instrument_ids].each do |instrument_id|
         InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)
       end 
-    
       render json: setup
     else
       render json: { errors: setup.errors.full_messages }, status: :unprocessable_entity
@@ -58,7 +56,7 @@ class SetupsController < ApplicationController
       setup.destroy
       head :no_content
     else 
-      render json: "Invalid Credentioals", status: :unauthorized
+      render json: "Invalid Credentials", status: :unauthorized
     end 
   end
 
@@ -71,7 +69,7 @@ class SetupsController < ApplicationController
   end
 
   def setup_params
-    params.permit(:name, :description, :photo, :genre)
+    params.permit(:name, :description, :photo, :genre, :instrument_ids)
   end
 
   # def authorize

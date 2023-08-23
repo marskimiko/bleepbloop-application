@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   post '/signup', to: 'users#create'
-  get '/users/:id', to: 'users#show'
-  get '/setups/:id', to: 'setups#show'
-  post '/users/:user_id', to: 'setups#create'
+  # get '/users/:id', to: 'users#show'
+  # post '/users/:user_id', to: 'setups#create'
 
 
   resources :instrument_setups

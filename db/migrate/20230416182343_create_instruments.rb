@@ -4,7 +4,7 @@ class CreateInstruments < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :brand
       t.string :photo
-
+      t.string :category
       t.timestamps
     end
   end

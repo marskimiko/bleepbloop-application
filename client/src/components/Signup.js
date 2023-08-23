@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Signup() {
   const [name, setName] = useState("")
+  const [image, setImage] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -15,6 +16,14 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name)
+    formData.append("image", image)
+    formData.append("username", username)
+    formData.append("password", password)
+    formData.append("passwordConfirmation", passwordConfirmation)
+
+
     fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
