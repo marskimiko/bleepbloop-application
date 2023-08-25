@@ -27,15 +27,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: current_user, status: :ok
+    user = User.find_by(id: session[:user_id])
+    if user
+      render json: user
+    else
+      render json: { error: "Not Authorized"}, status: :unauthorized
+    end
   end
+
+  # def show
+  #   render json: current_user, status: :ok
+  # end
 
 
   private
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
+  # def current_user
+  #   User.find_by(id: session[:user_id])
+  # end
 
   def user_params
     params.permit(:name, :username, :password, :password_confirmation, :image)
