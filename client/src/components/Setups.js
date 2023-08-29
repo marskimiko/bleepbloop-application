@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 
 function Setups() {
-  const { loggedIn, user, instruments } = useContext(UserContext);
+  const { loggedIn, user } = useContext(UserContext);
   const [formFlag, setFormFlag] = useState(false);
   
   // console.log(user.setups)
@@ -24,8 +24,8 @@ function Setups() {
     })
 
     return (
-      <div>
-        <h3>Setups </h3>
+      <div className="App">
+        <h3>My Setups</h3>
         {setupsList}
         <br />
         {formFlag ? 

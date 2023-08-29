@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-import ImageError from './ImageError';
-
 function Signup() {
   const [name, setName] = useState("")
   const [image, setImage] = useState(null)
@@ -19,7 +17,6 @@ function Signup() {
     e.preventDefault()
 
     if (!image) {
-      console.log('image is null')
       setIsImage(true)
     } else {
       const formData = new FormData();

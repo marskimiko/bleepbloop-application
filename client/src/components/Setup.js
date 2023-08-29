@@ -36,7 +36,7 @@ function Setup({ setup }) {
 
   return (
     <div className="container">
-      <Card style={{ width: '18rem' }}>
+      <Card style={{marginTop: 50, marginBottom: 50}}>
         <Card.Header as="h5">{name}</Card.Header>
         <Card.Img src={photo}/>
         {isEdit ?(

@@ -1,6 +1,7 @@
 class SetupsController < ApplicationController
-  skip_before_action :authorize, only: [:index]
-  before_action :authorize, only: [:show]
+  skip_before_action :authorize
+  # skip_before_action :authorize, only: [:index]
+  # before_action :authorize, only: [:show]
 
   def index
     render json: Setup.all, status: :ok

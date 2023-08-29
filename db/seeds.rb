@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-routes = Instrument.create([
+instruments = Instrument.create([
   {
     name: "minilogue",
     brand: "korg",
@@ -175,5 +175,43 @@ routes = Instrument.create([
     brand: "pioneer",
     category: "other",
     photo: "https://media.guitarcenter.com/is/image/MMGS7/L77643000000001-00-600x600.jpg",
+  }
+])
+
+user = User.create([
+  {
+    username: "testuser", 
+    password: "testuser",
+    name: "testuser",
+    photo: "https://img.freepik.com/premium-vector/business-global-economy_24877-41082.jpg"
+   }
+])
+
+setup = Setup.create([
+  {
+    name: "dawless setup",
+    description: "this is a test setup for the bleepbloop application",
+    photo: "https://dt7v1i9vyp3mf.cloudfront.net/styles/news_large/s3/imagelibrary/J/JamHot_03-luLlUJffTAWdszTs12NWfWcmbHDp2W8g.jpg",
+    genre: "electronic",
+    user_id: User.first.id
+  }
+])
+
+instrument_setups = InstrumentSetup.create([
+  { 
+    instrument_id: 12,
+    setup_id: Setup.first.id
+  },
+  { 
+    instrument_id: 4,
+    setup_id: Setup.first.id
+  },
+  { 
+    instrument_id: 6,
+    setup_id: Setup.first.id
+  },
+  { 
+    instrument_id: 21,
+    setup_id: Setup.first.id
   }
 ])

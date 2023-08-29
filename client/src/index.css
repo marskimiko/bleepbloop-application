@@ -12,6 +12,18 @@ code {
     monospace;
 }
 
+div.homecontainer {
+    height: 10em;
+    position: relative }
+div.homecontainer p {
+    margin: 0;
+    background: rgb(106, 218, 238);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+
 /* .container {
   padding-top: 500px;
   display: grid;
@@ -51,6 +63,13 @@ code {
   padding: 15px;
   width: 30%;
   
+}
+
+.profilecard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
 }
 
 .createsetupbutton {

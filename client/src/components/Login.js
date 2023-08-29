@@ -1,7 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom"
-
 import { UserContext } from '../context/UserContext';
+
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Login() {
   const [username, setUsername] = useState("")
@@ -39,26 +44,43 @@ function Login() {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label>Username: </label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        /> <br/>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> <br/>
-        <input type="submit"/>
-      </form>
+    <Container>
+      <Form onSubmit={handleSubmit} style={{ width: '15rem' }} className="mt-5">
+
+        <Form.Group className="mb-3">
+          <Form.Label column sm={2}>Username</Form.Label>
+            <Form.Control
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label column sm={2}>Password</Form.Label>
+            <Form.Control
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            /> 
+        </Form.Group>
+
+        <Form.Group as={Row} className="mt-3">
+          <Col >
+            <Button type="submit">Sign in</Button>
+          </Col>
+        </Form.Group>
+
+      </Form>
+
       {errors? <div style={{ color: "red" }}>{errors}</div>:null}
-    </>
+
+    </Container>
   )
 }
 
 export default Login;
+
+// className='square border rounded border-5'
