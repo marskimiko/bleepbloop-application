@@ -82,8 +82,11 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         value={formData.genre}
         onChange={handleChange}
       />
-      <Button variant="success" type="submit">
-        Save
+      <Button
+        onClick={() => setIsEdit((isEdit) => !isEdit)} 
+        variant="success" 
+        type="submit"
+      > Save
       </Button>
     </Form>
     </Container>
