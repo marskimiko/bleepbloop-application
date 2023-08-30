@@ -24,14 +24,15 @@ function Setups() {
     })
 
     return (
-      <div className="App">
-        <h3>My Setups</h3>
+      <div className="setupscontainer">
+        <h3 classname="setupstitle">My Setups</h3>
         {setupsList}
         <br />
         {formFlag ? 
           <SetupForm />
           :
-          <Button 
+          <Button
+          size="sm" 
           onClick={() => setFormFlag(true)}
           className='createsetupbutton'
           >Create Setup</Button>
