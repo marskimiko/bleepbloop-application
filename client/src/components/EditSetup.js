@@ -45,6 +45,7 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     .then(res => res.json())
     .then(data => {
       editSetupList(data)
+      setIsEdit(!isEdit)
     })
   }
 
@@ -82,11 +83,11 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         value={formData.genre}
         onChange={handleChange}
       />
-      <Button
-        onClick={() => setIsEdit((isEdit) => !isEdit)} 
+      <Button 
         variant="success" 
         type="submit"
-      > Save
+      >
+        Save
       </Button>
     </Form>
     </Container>
@@ -94,3 +95,5 @@ function EditSetup({setup, isEdit, setIsEdit}) {
 }
 
 export default EditSetup
+
+// onClick={() => setIsEdit((isEdit) => !isEdit)} 
