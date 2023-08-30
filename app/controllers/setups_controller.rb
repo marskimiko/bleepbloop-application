@@ -31,8 +31,6 @@ class SetupsController < ApplicationController
   def create
     setup = current_user.setups.create!(setup_params)
     if setup.valid?
-
-      # params[:instrument_ids].each{|instrument_id| InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)}
       params[:instrument_ids].each do |instrument_id|
         InstrumentSetup.create(setup_id: setup.id, instrument_id: instrument_id)
       end 
@@ -42,9 +40,31 @@ class SetupsController < ApplicationController
     end
   end
 
+  # def update
+  #   setup = Setup.find(params[:id])
+  #   if setup && setup.user_id == current_user.id
+      
+  #     params[:instrument_ids].each do |instrument_id|
+  #       # params gets all instrument ids here
+  #       # InstrumentSetup.destroy(instrument_id: instrument_id)
+  #       InstrumentSetup.update(instrument_id: instrument_id)
+  #     end
+
+  #     # params[:instrument_ids].update(:instrument_ids)
+
+  #     # params gets all instrument ids here
+  #     setup.update!(setup_params)
+  #     render json: setup, status: :created
+  #   else
+  #     render json: "Invalid Credentials", status: :unauthorized
+  #   end
+  # end
+
   def update
     setup = Setup.find(params[:id])
+    instruments = Instrument.find(params[:instrument_ids])
     if setup && setup.user_id == current_user.id
+      setup.update(instruments: instruments)
       setup.update!(setup_params)
       render json: setup, status: :created
     else

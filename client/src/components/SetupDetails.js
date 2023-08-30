@@ -13,7 +13,6 @@ function SetupDetails() {
   const { user } = useContext(UserContext);
   const params = useParams()
   const userSetups = user.setups
-  
 
 
 

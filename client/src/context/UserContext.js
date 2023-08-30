@@ -17,7 +17,8 @@ function UserProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
   // const [setups, setSetups] = useState([])
   // const [instruments, setInstruments] = useState([])
-  const [instruments, setInstruments] = useState([])
+  const [allInstruments, setAllInstruments] = useState([])
+  // const [instruments, setInstruments] = useState([])
 
   // useEffect(() => {
   //   fetch('/me')
@@ -71,7 +72,8 @@ function UserProvider({ children }) {
     fetch('/instruments')
     .then(res => res.json())
     .then(data => {
-      setInstruments(data)
+      // setInstruments(data)
+      setAllInstruments(data)
       // console.log('usercontext instruments', data)
     })
   }
@@ -86,7 +88,8 @@ function UserProvider({ children }) {
   const logout = () => {
     setLoggedIn(false)
     setUser({})
-    setInstruments([])
+    // setInstruments([])
+    setAllInstruments([])
   }
 
   const signup = (user) => {
@@ -97,7 +100,7 @@ function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{user, setUser, login, logout, signup, loggedIn, instruments}}>
+    <UserContext.Provider value={{user, setUser, login, logout, signup, loggedIn, allInstruments}}>
       {children}
     </UserContext.Provider>
   );

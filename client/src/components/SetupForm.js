@@ -15,7 +15,7 @@ import {
 
 
 const SetupForm = () => {
-  const { user, setUser, instruments } = useContext(UserContext);
+  const { user, setUser, allInstruments } = useContext(UserContext);
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [photo, setPhoto] = useState("");
@@ -59,10 +59,6 @@ const SetupForm = () => {
   }
 
 
-
-
-
-
   return (
     <Container>
     <Form onSubmit={handleSubmit}>
@@ -104,7 +100,7 @@ const SetupForm = () => {
         onChange={(e) => setInstrumentIds(e.target.value)}
         input={<OutlinedInput label="instruments" />}
         >
-        {instruments.map((instrument) => (
+        {allInstruments.map((instrument) => (
           <MenuItem key={instrument.id} value={instrument.id}>
             {instrument.name}
           </MenuItem>
