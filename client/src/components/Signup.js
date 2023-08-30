@@ -92,7 +92,9 @@ function Signup() {
             />
         <input type="submit"/>
       </form>
-          <li style={{ color: "red" }}>add image</li>
+          <ul>
+            <li style={{ color: "red" }}>add image</li>
+          </ul>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>

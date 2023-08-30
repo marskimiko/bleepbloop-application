@@ -21,6 +21,7 @@ const SetupForm = () => {
   const [photo, setPhoto] = useState("");
   const [genre, setGenre] = useState("");
   const [instrumentIds, setInstrumentIds] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   function updateUserSetups(setup) {
     const updatedSetups = [...user.setups, setup]
@@ -28,8 +29,8 @@ const SetupForm = () => {
     setUser(updatedUser)
   }
    
-  
-  const handleSubmit = (e) => {
+
+  function handleSubmit(e) {
     e.preventDefault()
 
     fetch(`/setups`, {
@@ -43,13 +44,25 @@ const SetupForm = () => {
         instrument_ids: instrumentIds
       })
     })
-    .then(res => res.json())
-    .then(data => {
-      // console.log('data', data)
-      updateUserSetups(data)
+
+    .then(res => {
+      if (res.ok) {
+        res.json()
+        .then(data => {
+          updateUserSetups(data)
+        })
+      } else {
+        res.json().then(json => setErrors(json.errors))
+      }
     })
 
   }
+
+
+
+
+
+
   return (
     <Container>
     <Form onSubmit={handleSubmit}>
@@ -103,6 +116,7 @@ const SetupForm = () => {
         Add
       </Button>
     </Form>
+    {errors? <ul style={{ color: "red" }}>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>:null}
     </Container>
   );
 

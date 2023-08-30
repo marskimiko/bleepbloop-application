@@ -16,7 +16,7 @@ function Login() {
 
   const {login} = useContext(UserContext)
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault()
 
     fetch(`/login`,{
