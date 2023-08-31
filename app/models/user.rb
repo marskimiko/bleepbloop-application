@@ -4,8 +4,8 @@ class User < ApplicationRecord
   has_many :setups
 
 
-  validates :username, presence: true
+  validates :username, presence: true, length: { minimum: 2 }
   # validates :image, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 2 }
 
 end

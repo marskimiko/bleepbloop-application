@@ -6,9 +6,6 @@ import EditSetup from './EditSetup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-          
 
 function Setup({ setup }) {
   const { user, setUser } = useContext(UserContext);
@@ -33,8 +30,12 @@ function Setup({ setup }) {
   };
   
   return (
-    <div class="setupcard">
-      <img src={photo} alt="setup" style={{ width: '100%' }}/>
+    <div className="setupcard">
+      <img 
+        src={ photo || 'https://m.media-amazon.com/images/I/51Ib3jYSStL._AC_UF894,1000_QL80_.jpg' } 
+        alt="setup" 
+        style={{ width: '100%' }}
+      />
       <h1 key={id}>{name}</h1>
       {isEdit? (
         <EditSetup
@@ -44,7 +45,7 @@ function Setup({ setup }) {
         />
       ) : (
         <>
-          <p class="description">{description}</p>
+          <p className="description">{description}</p>
           <p>{genre}</p>
           <p>
             <Button

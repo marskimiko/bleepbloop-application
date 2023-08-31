@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { UserContext  } from "../context/UserContext";
 
 import Container from 'react-bootstrap/Container';
@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 function Navigation() {
-  const {user, logout, loggedIn} = useContext(UserContext)
+  const { logout, loggedIn} = useContext(UserContext)
   const navigate = useNavigate()
 
   const logoutUser = () => {

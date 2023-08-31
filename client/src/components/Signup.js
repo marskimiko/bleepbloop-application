@@ -2,6 +2,10 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 function Signup() {
   const [name, setName] = useState("")
   const [image, setImage] = useState(null)
@@ -50,235 +54,125 @@ function Signup() {
     }    
   }
   
-
   return(
     <div>
       {isImage ? (
-        <div>
-          <form onSubmit={handleSubmit}>
-          <label>Name: </label>
-            <input 
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          <label>Image: </label>
-            <input 
-              type="file"
-              id="image"
-              name="image"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-          <label>Username: </label>
-            <input 
-              type="text"
-              id="name"
-              name="username"
-              placeholder="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          <label>Password: </label>
-            <input 
-              type="password"
-              id="password"
-              name="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-        <input type="submit"/>
-      </form>
-          <ul>
-            <li style={{ color: "red" }}>add image</li>
-          </ul>
-        </div>
+        <Container>
+          <Form onSubmit={handleSubmit} style={{ width: '15rem' }} className="mt-5">
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Name: </Form.Label>
+              <Form.Control 
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Image: </Form.Label>
+              <Form.Control 
+                type="file"
+                id="image"
+                name="image"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Username: </Form.Label>
+              <Form.Control 
+                type="text"
+                id="name"
+                name="username"
+                placeholder="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Password: </Form.Label>
+              <Form.Control 
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+            <br/>
+        <Button type="submit">Sign Up</Button>
+      </Form>
+        <ul>
+          <li style={{ color: "red" }}>add image</li>
+        </ul>
+      </Container>
+
       ) : (
-        <form onSubmit={handleSubmit}>
-        <label>Name: </label>
-          <input 
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label>Image: </label>
-          <input 
-            type="file"
-            id="image"
-            name="image"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-        <label>Username: </label>
-          <input 
-            type="text"
-            id="name"
-            name="username"
-            placeholder="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        <label>Password: </label>
-          <input 
-            type="password"
-            id="password"
-            name="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        <input type="submit"/>
-      </form>
+
+        <Container>
+          <Form onSubmit={handleSubmit} style={{ width: '15rem' }} className="mt-5">
+
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Name: </Form.Label>
+              <Form.Control 
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Image: </Form.Label>
+              <Form.Control 
+                type="file"
+                id="image"
+                name="image"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label column sm={2}>Username: </Form.Label>
+              <Form.Control 
+                type="text"
+                id="name"
+                name="username"
+                placeholder="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>Password: </Form.Label>
+              <Form.Control 
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <br/>
+            <Button type="submit">Sign Up</Button>
+
+          </Form>
+        </Container>
       )}
       {errors? <ul style={{ color: "red" }}>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>:null}
     </div>
   )
-  
-
 
 }
 
 export default Signup;
-
-        /* <label>Confirm Password: </label>
-          <input 
-            type="password"
-            id="password-confirmation"
-            name="password-confirmation"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-        /> */
-
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("name", name)
-  //   formData.append("image", image)
-  //   formData.append("username", username)
-  //   formData.append("password", password)
-
-  //   // fetch('/signup', {
-  //   //   method: 'POST',
-  //   //   headers: { 'Content-Type': 'application/json'},
-  //   //   body: JSON.stringify({
-  //   //     name: name,
-  //   //     username: username,
-  //   //     password: password,
-  //   //     password_confirmation: passwordConfirmation
-  //   //   })
-  //   // })
-
-  //   fetch('/signup', {
-  //     method: 'POST',
-  //     body: formData
-  //   })
-  //   .then(response => response.json())
-  //   .then(user => {
-  //     if(!user.errors) {
-  //       signup(user)
-  //       navigate('/')
-  //     } else {
-  //       setName("")
-  //       setUsername("")
-  //       setPassword("")
-  //       // setPasswordConfirmation("")
-        
-  //       const errorLis = user.errors.map(error => <li>{error}</li>)
-  //       setErrors(errorLis)
-  //     }
-  //   })
-  // }
-
-
-
-
-    // return(
-  //   <div>
-      // <form onSubmit={handleSubmit}>
-      //   <label>Name: </label>
-      //     <input 
-      //       type="text"
-      //       id="name"
-      //       name="name"
-      //       value={name}
-      //       onChange={(e) => setName(e.target.value)}
-      //     />
-      //     <label>Image: </label>
-      //     <input 
-      //       type="file"
-      //       id="image"
-      //       name="image"
-      //       onChange={(e) => setImage(e.target.files[0])}
-      //     />
-      //   <label>Username: </label>
-      //     <input 
-      //       type="text"
-      //       id="name"
-      //       name="username"
-      //       value={username}
-      //       onChange={(e) => setUsername(e.target.value)}
-      //     />
-      //   <label>Password: </label>
-      //     <input 
-      //       type="password"
-      //       id="password"
-      //       name="password"
-      //       value={password}
-      //       onChange={(e) => setPassword(e.target.value)}
-      //     />
-      //   {/* <label>Confirm Password: </label>
-      //     <input 
-      //       type="password"
-      //       id="password-confirmation"
-      //       name="password-confirmation"
-      //       value={passwordConfirmation}
-      //       onChange={(e) => setPasswordConfirmation(e.target.value)}
-      //   /> */}
-      //   <input type="submit"/>
-      // </form>
-      // {errors? <ul style={{ color: "red" }}>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>:null}
-  //   </div>
-  // )
-
-
-
-    // function handleSubmit(e){
-  //   e.preventDefault()
-  //   const formData = new FormData();
-  //   formData.append("name", name)
-  //   formData.append("image", image)
-  //   formData.append("username", username)
-  //   formData.append("password", password)
-    
-
-  //   fetch(`/signup`,{
-  //     method:'POST',
-  //     body: formData
-  //   })
-
-  //   .then(res => {
-  //     if(res.ok){
-  //       res.json()
-  //       .then(user => {
-  //         signup(user)
-  //         navigate("/");
-  //       })
-  //       } else {
-  //         res.json()
-  //         .then(json => {
-  //           setName("")
-  //           setUsername("")
-  //           setPassword("")
-  //           setErrors(json.errors)
-  //           // setErrors(Object.entries(json.errors)) 
-  //         })
-  //       }
-  //     })  
-  // }

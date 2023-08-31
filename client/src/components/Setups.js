@@ -25,7 +25,7 @@ function Setups() {
 
     return (
       <div className="setupscontainer">
-        <h3 classname="setupstitle">My Setups</h3>
+        {/* <h3 classname="setupstitle">My Setups</h3> */}
         {setupsList}
         <br />
         {formFlag ? 

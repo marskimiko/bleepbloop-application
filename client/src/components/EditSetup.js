@@ -10,19 +10,15 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  FormControl,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-  ListItemText
+  FormControl
 } from "@mui/material";
 
 function EditSetup({setup, isEdit, setIsEdit}) {
   const { user, setUser, allInstruments } = useContext(UserContext);
-  // const [instrumentIds, setInstrumentIds] = useState([]);
   const [editInstruments, setEditInstruments] = useState([])
-  const {name, description, photo, genre, id, instruments} = setup;
-  // console.log(setup)
+  const {name, description, photo, genre, id } = setup;
+  const [errors, setErrors] = useState([]);
+
   const [formData, setFormData] = useState({
     name: name,
     description: description,
@@ -39,15 +35,7 @@ function EditSetup({setup, isEdit, setIsEdit}) {
   }
   
   function handleInstrumentChange(e) {
-    // setInstrumentIds({...formData, [formData.instrument_ids]: e.target.value})
-
-    // console.log('formData',formData.instrument_ids)
-    // console.log('formdata,instrument_ids',formData.instrument_ids)
-    // console.log('e.target.value',e.target.value)
-    // setEditInstruments({...setup.instruments, editInstruments: e.target.value})
     setEditInstruments(e.target.value)
-  
-    
   }
 
   function editSetupList(updatedSetup) {
@@ -62,26 +50,28 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     setUser(updatedUser)
   }
 
-
   function handleEditSetup(e) {
     e.preventDefault();
 
-    // add key value pair to form ( add key instrument ids with an array of instrument ids to formData)
-
     const getInstrumentIds = editInstruments.map((inst) => inst.id)
-
     const newFormData = {...formData, instrument_ids: getInstrumentIds}
 
-  
     fetch(`/setups/${id}`, {
       method: "PATCH",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newFormData)
     })
-    .then(res => res.json())
-    .then(data => {
-      editSetupList(data)
-      setIsEdit(!isEdit)
+
+    .then(res => {
+      if (res.ok) {
+        res.json()
+        .then(data => {
+          editSetupList(data)
+          setIsEdit(!isEdit)
+        })
+      } else {
+        res.json().then(json => setErrors(json.errors))
+      }
     })
   }
 
@@ -119,25 +109,6 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         value={formData.genre}
         onChange={handleChange}
       />
-
-      {/* <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel>Instruments</InputLabel>
-        <Select
-          multiple
-          value={formData.instrument_ids}
-          onChange={(e) => console.log(e.target.value)}
-          input={<OutlinedInput label="instruments" />}
-          renderValue={(selected) => selected.join(', ')}
-        >
-          {allInstruments.map((instrument) => (
-            <MenuItem key={instrument.id} value={instrument.id}>
-              <Checkbox  checked={}/>
-              <ListItemText primary={instrument.name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl> */}
-
       <FormControl sx={{ m: 1, width: 500 }}>
         <InputLabel>Instruments</InputLabel>
         <Select
@@ -162,6 +133,7 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         Save
       </Button>
     </Form>
+    {errors? <ul style={{ color: "red" }}>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>:null}
     </Container>
   );
 }

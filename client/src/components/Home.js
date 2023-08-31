@@ -11,14 +11,14 @@ function Home() {
 
   if (loggedIn) {
     return (
-      <div class="profilecard">
+      <div className="profilecard">
         <img src={user.image || user.photo} alt="avatar" style={{ width: '100%' }}/>
         <h1>{user.username}</h1>
       </div>
     )
   } else {
     return (
-      <div class="homecontainer">
+      <div className="homecontainer">
         <p>PLEASE LOGIN OR SIGNUP</p>
       </div>
     )

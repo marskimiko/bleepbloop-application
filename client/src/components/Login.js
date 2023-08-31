@@ -82,5 +82,3 @@ function Login() {
 }
 
 export default Login;
-
-// className='square border rounded border-5'

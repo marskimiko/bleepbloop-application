@@ -39,7 +39,6 @@ const SetupForm = () => {
       body: JSON.stringify({
         name: name,
         description: description,
-        photo: photo,
         genre: genre,
         instrument_ids: instrumentIds
       })
