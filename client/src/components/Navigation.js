@@ -28,11 +28,12 @@ function Navigation() {
         {/* <h1>Hello, {user.username}</h1> */}
         <Navbar>
           <Container>
-            <Navbar.Brand>BlEEPBLOOP</Navbar.Brand>
+            <Navbar.Brand>BLEEPBLOOP</Navbar.Brand>
             <Nav>
               <Nav.Link onClick={logoutUser}>Logout</Nav.Link>
               <Nav.Link href='/'>Home</Nav.Link>
               <Nav.Link href='/setups'>Setups</Nav.Link>
+              <Nav.Link href='/instruments'>Instruments</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

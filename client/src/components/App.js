@@ -7,6 +7,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Setups from './Setups';
 import SetupDetails from './SetupDetails';
+import InstrumentContainer from './InstrumentContainer';
 
 import { UserProvider } from "../context/UserContext";
 
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/setups" element={<Setups />} />
             <Route exact path="/setups/:id" element={<SetupDetails />}/>
+            <Route exact path="/instruments" element={<InstrumentContainer />}/>
           </Routes>
       </UserProvider>
     </div>

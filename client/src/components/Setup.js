@@ -35,7 +35,7 @@ function Setup({ setup }) {
   return (
     <div class="setupcard">
       <img src={photo} alt="setup" style={{ width: '100%' }}/>
-      <h1>{name}</h1>
+      <h1 key={id}>{name}</h1>
       {isEdit? (
         <EditSetup
           setup={setup}
@@ -67,8 +67,10 @@ function Setup({ setup }) {
       )
     }
     </div>
-  )
+  )  
+}
 
+export default Setup;
 
   // return (
   //   <div className="container">
@@ -98,8 +100,3 @@ function Setup({ setup }) {
   //     </Card>
   //   </div>
   // );
-  
-  
-}
-
-export default Setup;

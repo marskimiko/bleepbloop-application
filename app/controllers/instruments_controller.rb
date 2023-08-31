@@ -1,5 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_action :authorize
+  skip_before_action :authorize
 
   # temporarily comment out current_user index just for testing some stuff out
 
@@ -18,14 +18,14 @@ class InstrumentsController < ApplicationController
   end
 
   
-  # def create
-  #   instrument = current_user.instruments.create(instrument_params)
-  #   if instrument.valid?
-  #     render json: instrument
-  #   else
-  #     render json: { errors: instrumnet.errors.full_messages}, satus: :unprocessable_entity
-  #   end
-  # end
+  def create
+    instrument = Instrument.create!(instrument_params)
+    if instrument.valid?
+      render json: instrument
+    else
+      render json: { errors: instrumnet.errors.full_messages}, satus: :unprocessable_entity
+    end
+  end
 
   # def show
   #   instrument = current_user.instruments.find_by(id: params[:id])
@@ -37,15 +37,15 @@ class InstrumentsController < ApplicationController
   #   end
   # end
 
-  # private
+  private
 
-  # def current_user
-  #   User.find_by(id: session[:user_id])
-  # end
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 
-  # def instrument_params
-  #   params.permit(:name, :brand, :photo, :category)
-  # end
+  def instrument_params
+    params.permit(:name, :brand, :photo, :category)
+  end
 
   def authorize
     return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id

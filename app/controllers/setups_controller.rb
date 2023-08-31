@@ -1,31 +1,14 @@
 class SetupsController < ApplicationController
   skip_before_action :authorize
-  # skip_before_action :authorize, only: [:index]
-  # before_action :authorize, only: [:show]
 
   def index
     render json: Setup.all, status: :ok
   end
 
-  # def index
-  #   setups = current_user.setups
-  #   render json: setups
-  # end
-
   def show
     setup = Setup.find(params[:id])
     render json: setup
   end
-
-  # def show
-  #   setup = current_user.setups.find_by(id: params[:id])
-  #   if setup
-  #     render json: setup
-  #   else
-  #     render json: { error: "Not Found" }, status: :unauthorized
-  #   end
-
-  # end
 
 
   def create
@@ -40,25 +23,6 @@ class SetupsController < ApplicationController
     end
   end
 
-  # def update
-  #   setup = Setup.find(params[:id])
-  #   if setup && setup.user_id == current_user.id
-      
-  #     params[:instrument_ids].each do |instrument_id|
-  #       # params gets all instrument ids here
-  #       # InstrumentSetup.destroy(instrument_id: instrument_id)
-  #       InstrumentSetup.update(instrument_id: instrument_id)
-  #     end
-
-  #     # params[:instrument_ids].update(:instrument_ids)
-
-  #     # params gets all instrument ids here
-  #     setup.update!(setup_params)
-  #     render json: setup, status: :created
-  #   else
-  #     render json: "Invalid Credentials", status: :unauthorized
-  #   end
-  # end
 
   def update
     setup = Setup.find(params[:id])
@@ -72,6 +36,7 @@ class SetupsController < ApplicationController
     end
   end
 
+  
   def destroy
     setup = Setup.find(params[:id])
     if setup && setup.user_id == current_user.id
@@ -81,7 +46,6 @@ class SetupsController < ApplicationController
       render json: "Invalid Credentials", status: :unauthorized
     end 
   end
-
 
 
   private
