@@ -17,8 +17,8 @@ function Setups() {
   if (loggedIn) {
     const setupsList = user.setups.map((setup) => {
       return (
-        <div className="container">
-          <Setup key={setup.id} setup={setup}/>          
+        <div key={setup.id} className="container">
+          <Setup  setup={setup}/>          
         </div>
       )
     })

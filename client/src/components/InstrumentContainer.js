@@ -13,8 +13,8 @@ function InstrumentContainer() {
 
   const instrumentList = allInstruments.map((instrument) => {
     return (
-      <div className="container">
-        <InstrumentCard key={instrument.id} instrumentObject={instrument}/>
+      <div key={instrument.id} className="container">
+        <InstrumentCard  instrumentObject={instrument}/>
       </div>
     )
   })

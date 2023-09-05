@@ -12,7 +12,7 @@ function Setup({ setup }) {
   const {name, description, photo, genre, id} = setup;
   const [isEdit, setIsEdit] = useState(false);
 
-  
+  console.log(setup)
 
   function deleteSetup() {
     const setups = user.setups
@@ -32,7 +32,7 @@ function Setup({ setup }) {
   return (
     <div className="setupcard">
       <img 
-        src={ photo || 'https://m.media-amazon.com/images/I/51Ib3jYSStL._AC_UF894,1000_QL80_.jpg' } 
+        src={ photo } 
         alt="setup" 
         style={{ width: '100%' }}
       />
