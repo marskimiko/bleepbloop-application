@@ -109,7 +109,7 @@ function EditSetup({setup, isEdit, setIsEdit}) {
         value={formData.genre}
         onChange={handleChange}
       />
-      <FormControl sx={{ m: 1, width: 500 }}>
+      <FormControl sx={{ m: 1, width: 200 }}>
         <InputLabel>Instruments</InputLabel>
         <Select
           multiple
