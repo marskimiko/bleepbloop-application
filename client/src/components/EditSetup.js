@@ -26,8 +26,6 @@ function EditSetup({setup, isEdit, setIsEdit}) {
     genre: genre
   });
 
-  console.log(editInstruments)
-
 
   function handleChange(e) {
     setFormData({...formData, [e.target.name]: e.target.value})
@@ -127,10 +125,17 @@ function EditSetup({setup, isEdit, setIsEdit}) {
       </FormControl>
       <br/>
       <Button 
-        variant="success" 
+        variant="primary"
+        size="sm" 
         type="submit"
       >
         Save
+      </Button>
+      <Button 
+        onClick={() => setIsEdit(false)}
+        variant="secondary"
+        size="sm"
+        >Cancel
       </Button>
     </Form>
     {errors? <ul style={{ color: "red" }}>{errors.map((error, i) => <li key={i}>{error}</li>)}</ul>:null}
@@ -139,5 +144,3 @@ function EditSetup({setup, isEdit, setIsEdit}) {
 }
 
 export default EditSetup
-
-// onClick={() => setIsEdit((isEdit) => !isEdit)} 

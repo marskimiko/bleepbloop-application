@@ -25,11 +25,13 @@ function Setups() {
 
     return (
       <div className="setupscontainer">
-        {/* <h3 classname="setupstitle">My Setups</h3> */}
         {setupsList}
         <br />
         {formFlag ? 
-          <SetupForm />
+          <SetupForm 
+            formFlag={formFlag} 
+            setFormFlag={setFormFlag}
+          />
           :
           <Button
           size="sm" 
