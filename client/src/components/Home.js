@@ -18,32 +18,28 @@ function Home() {
     )
   } else {
     return (
-      <div className="homecontainer">
-        <p>PLEASE LOGIN OR SIGNUP</p>
+
+      <body class="text-center">
+      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">BLEEPBLOOP</h3>
+          </div>
+        </header>
+        <main role="main" class="inner cover">
+          <h1 class="cover-heading">Welcome!</h1>
+          <p class="lead">BleepBloop is a website for electronic musicians to organize their dawless music setups. Rather than trying to remember different systems for various performances or songs, BleepBloop is a place where you can create and organize your creations in one space. Please signup or login above. For more information on how this application was create please click below. </p>
+          <p class="lead">
+            <a href="https://github.com/marskimiko/bleepbloop-application" class="btn btn-lg btn-secondary">Learn more</a>
+          </p>
+        </main>
       </div>
+    </body>
+      // <div className="homecontainer">
+      //   <p>PLEASE LOGIN OR SIGNUP</p>
+      // </div>
     )
   }
-
-  // if (loggedIn) {
-  //   return (
-  //     <Container>
-  //       <Row className="m-auto align-self-center">
-  //         <Col>
-  //           <Card style={{ width: '18rem'}}>
-  //             <Card.Title>{user.username}'s profile</Card.Title>
-  //             <Card.Img src={user.image} alt="avatar"/>
-  //           </Card>
-  //         </Col>
-  //       </Row>
-  //     </Container>
-  //   )
-  // } else {
-  //   return (
-  //     <div class="homecontainer">
-  //       <p>PLEASE LOGIN OR SIGNUP</p>
-  //     </div>
-  //   )
-  // }
 
 }
 
