@@ -4,7 +4,7 @@
 - https://github.com/marskimiko/bleepbloop-application
 
 # Video Walkthrough:
-
+https://www.youtube.com/watch?v=ofgClSuVnUI
 
 # Blogpost inspired by BleepBloop
 
